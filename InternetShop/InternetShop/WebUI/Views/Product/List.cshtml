@@ -1,0 +1,25 @@
+﻿@using WebUI.Models
+@model ProductListViewModel
+
+@{
+    ViewBag.Title = Model.CurrentCategory;
+}
+
+<div id="loading" class="load" style="display: none">
+    <p>Загрузка <img src="/Content/images/ajax-loader.gif" alt="loader"/></p>
+</div>
+
+<div>
+    @foreach (var p in Model.Products)
+    {
+        Html.RenderPartial("ProductSummary", p);
+    }
+</div>
+
+<div id="ajaxUpdate">
+    @*сюда будет вставлен обновленный блок AJAX*@
+</div>
+
+<div class="pager">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentCategory }))
+</div>

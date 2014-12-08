@@ -1,0 +1,15 @@
+﻿@model Entities.Cart
+
+<div id="cartSumm">
+    @if (!Model.Lines.Any())
+    {
+        <b>@Html.ActionLink("Ваша корзина сейчас пуста", "Index", "Cart", new{returnUrl = Request.Url.PathAndQuery}, null)</b>
+    }
+    else
+    {
+        <span class="caption">
+            <b>Корзина:</b> @Model.Lines.Sum(x=>x.Quantity) товар, @Model.ComputeTotalValue().ToString("c")
+            @Html.ActionLink("перейти", "Index", "Cart", new{returnUrl = Request.Url.PathAndQuery}, null)
+        </span>
+    }
+</div>

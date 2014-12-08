@@ -1,0 +1,30 @@
+﻿div#header {
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+
+div#header a.title {
+    font-weight: bold;
+    font-family: "Century Gothic", Tahoma;
+    font-size: 200%;
+    color: #ffd700;
+    text-decoration: none;
+}
+
+div#header div.posttitle {
+    font-family: Adobe Fan Heiti Std B;
+    letter-spacing: 2px;
+    font-size:12px;
+    color: #ffdead;
+    text-decoration: none;
+}
+
+div#header div.phone {
+    color:  #ffdead;
+    font-size: 110%;
+}
+
+div#header div.time {
+    color:  #ffdead;
+    font-size: 100%;
+}

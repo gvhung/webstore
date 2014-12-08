@@ -1,0 +1,20 @@
+﻿div.pager {
+    text-align: center;
+}
+
+div.pager A{
+    font-size: 100%;
+    color: #dddddd;
+    text-decoration: none;
+    padding: 0 .2em 0 .2em;
+}
+
+div.pager a:hover {
+    background-color: silver;
+    color: black;
+}
+
+div.pager a:active {
+    background-color: #666666;
+    color: #223446;
+}

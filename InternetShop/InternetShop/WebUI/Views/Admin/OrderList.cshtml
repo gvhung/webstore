@@ -1,0 +1,63 @@
+﻿@model List<WebUI.Models.OrderSummary>
+
+@{
+    ViewBag.Title = "Список новых заказов";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int totalPrice = 0;
+}
+
+<h1>Список новых заказов</h1>
+
+<table width="100%" class="grid">
+    <tr>
+        <th>Id</th>
+        <th>Пользователь</th>
+        <th>Дата заказа</th>
+        <th>Список товаров</th>
+        <th>Общая стоимость заказа</th>
+        <th>Действие</th>
+    </tr>
+
+    @foreach (var order in Model)
+    {
+        <tr>
+            <td>@order.OrderId</td>
+            <td>@Html.ActionLink(order.UserProfile.UserName, "GetUser", new { order.UserProfile.UserId })</td>
+            <td>@order.OrderDate</td>
+            <td>
+                <table width="100%" style="border-left: 1px dotted  gray; border-right: 1px dotted  gray">
+                    <thead>
+                        <tr>
+                            <th>Название</th>
+                            <th>Цена</th>
+                            <th>Количество</th>
+                            <th>Сумма</th>
+                        </tr>
+                    </thead>
+                    @foreach (var product in order.Products)
+                    {
+                        <tr>
+                            <td>@product.Key.Name</td>
+                            <td>@product.Key.Price.ToString("c")</td>
+                            <td>@product.Value</td>
+                            @{
+                                int sum = product.Key.Price * product.Value;
+                                totalPrice += sum;
+                            }
+                            <td>@sum.ToString("c")</td>
+                        </tr>
+                    }
+                </table>
+            </td>
+            <td>@totalPrice.ToString("c")</td>
+            <td>
+                @using (Html.BeginForm("ProcessedOrder", "Admin"))
+                {
+                    totalPrice = 0;
+                    @Html.Hidden("Id", order.OrderId)
+                    <input class="actionBtn" type="submit" value="Обработать" />
+                }
+            </td>
+        </tr>
+    }
+</table>

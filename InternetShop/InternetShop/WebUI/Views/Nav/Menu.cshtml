@@ -1,0 +1,21 @@
+﻿@using BinaryAnalysis.UnidecodeSharp
+@using Entities
+@model IEnumerable<string>
+
+@{
+    AjaxOptions ajaxOptions = new AjaxOptions
+    {
+        UpdateTargetId = "ajaxUpdate",
+        InsertionMode = InsertionMode.Replace,
+        LoadingElementDuration = 1000,
+        LoadingElementId = "loading"
+    };
+}
+
+@Ajax.ActionLink("Весь каталог", "List", "Product", ajaxOptions)
+
+@foreach (var cat in Model)
+{
+    @Ajax.ActionLink(cat, "List", new { controller = "Product", action = "List", category = cat.Unidecode(), page = 1 }, ajaxOptions, new { @class = cat.Unidecode() == ViewBag.SelectedCategory ? "selected" : null })
+}
+

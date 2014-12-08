@@ -1,0 +1,40 @@
+﻿div#categories {
+    border-radius: 5px;
+    float: left;
+    background-color: #223446;
+    width: 22%;
+    margin-right: 30px;
+    padding: .3em;
+}
+
+div#categories div.preCat {
+    border-bottom: 2px dashed whitesmoke;
+    text-align: center;
+    padding-bottom: .3em;
+    font-size: 130%;
+}
+
+div#categories a {
+    font-size: 110%;
+    font-weight: bold;
+    display: block;
+    text-decoration: none;
+    padding: .6em;
+    color: whitesmoke;
+    border-bottom: 1px dashed whitesmoke;
+}
+
+div#categories a.selected {
+    background-color: silver;
+    color: #223446;
+}
+
+div#categories a:hover {
+    background-color: silver;
+    color: #223446;
+}
+
+div#categories a:active {
+    background-color: #666666;
+    color: #223446;
+}

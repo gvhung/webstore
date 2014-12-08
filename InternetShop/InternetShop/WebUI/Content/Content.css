@@ -1,0 +1,49 @@
+﻿div#content {
+    border-radius: 5px;
+    background-color: #223446;
+    margin-left: 25%;
+    padding: 1em;
+}
+
+div.item {
+    border-radius: 5px;
+    background-color: #fffaf0;
+    color: #666666;
+    margin-bottom: 10px;
+}
+
+td.name a, td.nameProd{
+    color: #223446;
+    font-size: 120%;
+    font-weight: bold;
+    margin-top: .3em; 
+    padding: 0 0 0 .4em;
+    text-decoration: none;
+}
+
+td.name a:hover {
+    color: red;
+}
+
+td.name a:active {
+    color: #8b0000;
+    background-color: #fffaf0;
+}
+
+td.manufacturer {
+    font-size: 100%;
+    padding-left: .6em;
+}
+
+td.description {
+    font-size: 90%;
+    color: #223446;
+    padding-left: .6em;
+}
+
+td.price {
+    font-size: 120%;
+    color: #8b0000;
+    padding:0 .3em .3em 0;
+    text-align: right;
+}

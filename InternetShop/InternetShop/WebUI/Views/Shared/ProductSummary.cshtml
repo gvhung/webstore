@@ -1,0 +1,36 @@
+﻿@model Entities.Product
+@using WebUI.Service;
+
+<link href="~/Content/Site.css" rel="stylesheet" type="text/css"/>
+<link href="~/Content/Content.css" rel="stylesheet" type="text/css"/>
+
+<div class="item">
+    <table width="100%">
+        <tbody>
+            <tr>
+                <td class="name">
+                    @Html.RouteLink(@Model.Name, new{controller="Product", action="ViewProduct", Id = @Model.Id})
+                </td>
+            </tr>
+            <tr>
+                <td class="description">@ServiceClass.GetAShortString(Model.Description, 70)</td>
+            </tr>
+            <tr>
+                <td align="left" style="width: 65%" class="manufacturer">
+                    Производитель: @Model.Manufacturer
+                </td>
+                <td align="right" class="price">
+                    @Model.Price.ToString("c")
+                </td>
+                <td align="right"> 
+                    @using (Html.BeginForm("AddToCart", "Cart"))
+                    {
+                        @Html.HiddenFor(x => x.Id)
+                        @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                        <input class="actionBtn" type="submit" value="+ Добавить в карзину"/>
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

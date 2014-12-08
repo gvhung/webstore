@@ -1,0 +1,34 @@
+﻿@model Entities.Product
+
+@{
+    ViewBag.Title = @Model.Name;
+}
+
+<div class ="item">
+    <table width="100%">
+        <tr>
+            <td class="nameProd">
+                @Model.Name
+            </td>
+        </tr>
+        <tr>
+            <td align="left" style="width: 65%" class="manufacturer">
+                Производитель: @Model.Manufacturer
+            </td>
+            <td align="right" class="price">
+                @Model.Price.ToString("c")
+            </td>
+            <td align="right"> 
+                @using (Html.BeginForm("AddToCart", "Cart"))
+                {
+                    @Html.HiddenFor(x => x.Id)
+                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                    <input class="actionBtn" type="submit" value="+ Добавить в карзину"/>
+                }
+            </td>
+            <tr>
+            <td class="description">@Model.Description</td>
+        </tr>
+        </tr>
+    </table>
+</div>

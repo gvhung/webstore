@@ -1,0 +1,14 @@
+﻿@model Entities.Product
+
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Редактирование @Model.Name</h1>
+@using (Html.BeginForm("Edit", "Admin"))
+{
+    @Html.EditorForModel();
+    <input type="submit" value="Сохранить"/>
+    @Html.ActionLink("Завершить редактирование и вернуться к списку товаров", "Index")
+}

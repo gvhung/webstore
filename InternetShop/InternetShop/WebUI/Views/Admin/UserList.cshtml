@@ -1,0 +1,32 @@
+﻿@model List<WebUI.Models.ForActivation.UserProfile>
+
+@{
+    ViewBag.Title = "Список пользователей";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Список пользователей</h1>
+
+<table class="grid">
+    <tr>
+        <th>ID</th>
+        <th>Логин</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Email</th>
+        <th>Телефон</th>
+        <th>Адрес</th>
+    </tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.UserId</td>
+            <td>@user.UserName</td>
+            <td>@user.FirstName</td>
+            <td>@user.LastName</td>
+            <td>@user.Email</td>
+            <td>@user.Phone</td>
+            <td>@user.Address</td>
+        </tr>
+    }
+</table>

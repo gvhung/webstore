@@ -1,0 +1,85 @@
+﻿@using WebUI.Models.ForActivation
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/Category.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/Content.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/Footer.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/Page.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/Header.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/Navigation.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/Cart.css" type="text/css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery-1.8.2.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</head>
+<body>
+
+    <div id="header">
+        <table width="100%">
+            <tr>
+                <td>
+                    @Html.ActionLink("АРНОЛЬДМАРКЕТ.BY", "Index", new { controller = "Home", action = "Index" }, new { @class = "title" })
+                    <div class="posttitle">МАГАЗИН СПОРТИВНОГО ПИТАНИЯ</div>
+                </td>
+                <td>
+                    <div class="phone">
+                        + 375 (29) 523-05-83
+                            <br />
+                        + 375 (29) 860-10-86
+                    </div>
+                </td>
+                <td>
+                    <div class="time">Пн - Пт с 10.00 до 19.00</div>
+                    <div class="time">Сб - Вс с 11.00 до 18.00</div>
+                </td>
+                <td align="right">
+                    @Html.Partial("_LoginPartial")
+                    <div>@{Html.RenderAction("Summary", "Cart");}</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <nav>
+        <ul id="nav">
+            <li>@Html.ActionLink("Главная", "Index", "Home")</li>
+            <li>@Ajax.ActionLink("Каталог", "List", "Product", new AjaxOptions { UpdateTargetId = "ajaxUpdate", InsertionMode = InsertionMode.Replace, LoadingElementDuration = 1000, LoadingElementId = "loading" })</li>
+            <li>@Html.ActionLink("Доставка / Оплата", "Index", "Home")</li>
+            <li>@Html.ActionLink("Корзина", "Index", "Cart")</li>
+            <li>@Html.ActionLink("Контакты", "Index", "Contact")</li>
+            @if (Roles.IsUserInRole(SiteRole.Admin.ToString()))
+            {
+                <li>@Html.ActionLink("Администрирование", "UserList", "Admin")</li>
+            }
+        </ul>
+    </nav>
+
+    <div id="categories">
+        <div class="preCat">Каталог</div>
+        @{ Html.RenderAction("Menu", "Nav"); }
+    </div>
+
+    <div id="content">
+        <div id="ajaxUpdate">
+            @RenderBody()
+        </div>
+    </div>
+
+    <div id="spacer"></div>
+
+    <div id="footer">
+        <p>Дата создания проекта: @{ Html.RenderAction("Old", "Data"); }      Текущая дата и время: @{ Html.RenderAction("Now", "Data"); } </p>
+        <p>Разработчик сайта: Шараев Владимир</p>
+    </div>
+
+
+</body>
+</html>

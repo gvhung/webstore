@@ -1,0 +1,34 @@
+body{
+	color: #8f8f8f;
+	/*sans-serif - рубленные шрифты */
+	font: 14px Calibri, sans-serif;
+	background-color: #f8f8f8;
+	border-top: 5px solid #7e7e7e;
+	/*margin: 0;*/
+}
+
+.block1{
+	height: 350px;
+	background: #9CCD8D;
+	}
+	
+.block2{
+	height: 10px;
+	background: #f2f2f2;
+	}
+	
+.block3{
+	height: 150px;
+	background: #ffffff;
+	}
+	
+pipi{
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=10); /* IE 5.5+*/ 
+	-moz-opacity: 0.1; /* Mozilla 1.6 и ниже */ 
+	-khtml-opacity: 0.1; /* Konqueror 3.1, Safari 1.1 */ 
+	opacity: 0.1; /* CSS3 - Mozilla 1.7b +, Firefox 0.9 +, Safari 1.2+, Opera 9+ */ 
+}
+
+.contact{
+	font: 10px Calibri, sans-serif;
+}

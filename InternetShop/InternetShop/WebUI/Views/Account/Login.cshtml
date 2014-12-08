@@ -1,0 +1,19 @@
+﻿@model WebUI.Models.ForActivation.LogOnModel
+
+@{
+    ViewBag.Title = "Активация";
+}
+
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+ 
+    <fieldset style="color: whitesmoke">
+        <legend style="color: whitesmoke">Активация</legend>
+        @Html.EditorForModel()
+        <p></p>
+        <input type="submit" value="Войти" />
+    </fieldset>
+}
+

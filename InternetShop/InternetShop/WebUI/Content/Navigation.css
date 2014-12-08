@@ -1,0 +1,30 @@
+﻿ul#nav {
+    display: table;
+    width: 100%;
+    border: 1px solid #222;
+    padding: 0;
+}
+
+ul#nav li{
+    display: table-cell;
+    background: #223446;
+    border-left: 1px solid #222;
+}
+
+ul#nav li a{
+    display: block;
+    color: whitesmoke;
+    text-decoration: none;
+    padding: 4px 12px;
+    text-align: center;
+}
+
+ul#nav li a:hover {
+    background-color: silver;
+    color: #223446;
+}
+
+ul#nav li a:active{
+    background-color: #666666;
+    color: #223446;
+}

@@ -1,0 +1,71 @@
+﻿@model WebUI.Models.CartIndexViewModel
+
+@{
+    ViewBag.Title = "Корзина";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+        <h2>Корзина</h2>
+
+@if (!Model.Cart.Lines.Any())
+{
+    <p>Ваша корзина пуста.</p>
+    <p> Для покупки необходимо добавить товар в корзину.</p>
+}
+else
+{
+    <table width="100%" align="center" id="cart">
+        <thead class="cartThead">
+            <tr >
+                <th align="left">Наименование</th>
+                <th align="left">Цена</th>
+                <th align="right">Количество</th>
+                <th align="right">Стоимость</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var line in Model.Cart.Lines)
+            {
+                <tr class="cartItem">
+                    <td align="left">@line.Product.Name</td>
+                    <td align="left">@line.Product.Price</td>
+                    <td align="right">@line.Quantity</td>
+                    <td align="right">@((line.Product.Price*line.Quantity).ToString("c"))</td>
+                    <td>
+                        @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                        {
+                            @Html.HiddenFor(x => x.ReturnUrl)
+                            @Html.Hidden("Id", line.Product.Id)
+                            <input class="actionBtn" type="submit" value="удалить"/>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr class="cartFooter">
+                <td colspan="3" align="right">Итого:</td>
+                <td align="right">@Model.Cart.ComputeTotalValue().ToString("c")</td>
+            </tr>
+            
+        </tfoot>
+    </table>
+   
+        <table class="actionBtn">
+            <tr>
+                @*<td><a href="@Model.ReturnUrl">продолжить покупки</a></td>*@
+                <td>
+                    @using (Html.BeginForm("ClearCart", "Cart"))
+                    {
+                        @Html.HiddenFor(x => x.ReturnUrl)
+                        <input class="clearBtn" type="submit" value="очистить корзину"/>
+                    }
+                </td>
+                @using (Html.BeginForm())
+                {
+                    <td><input type="submit" class="actionBtn" value="Отправить заказ"/></td>
+                }
+            </tr>
+        </table>
+
+}
+
